@@ -1,7 +1,7 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
-import App from "./App"
+import App from "./app"
 import { store } from "./app/store"
 import "./index.css"
 
@@ -15,7 +15,8 @@ if (container) {
       <Provider store={store}>
         <App />
       </Provider>
-    </React.StrictMode>,
+    </React.StrictMode>
+    ,
   )
 } else {
   throw new Error(
