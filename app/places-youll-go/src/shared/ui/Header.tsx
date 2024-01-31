@@ -1,10 +1,12 @@
-import { Login } from "./Login"
+import { AuthButton } from "./AuthButton"
 
-export const Header = () =>
-{
+// TODO - add logo to header: import logo from '@/logo.png'
+
+export const Header = () => {
     return (
-        <div>
-            < Login />
+        <div id="nav-bar">
+            <a id="logo">Places You'll Go</a>
+            < AuthButton />
         </div>
     )
 }
