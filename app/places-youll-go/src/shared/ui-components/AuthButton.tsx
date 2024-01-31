@@ -19,7 +19,7 @@ function LogoutButton() {
           returnTo: window.location.origin
         }
       });
-    }}>Log out</button>
+    }}>Log Out</button>
   );
 }
 

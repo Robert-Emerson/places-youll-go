@@ -1,9 +1,9 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
-import App from "./app"
+import App from "./app/App"
 import { store } from "./app/store"
-import "./index.css"
+import "@/shared/global.css"
 import { Auth0Provider } from "@auth0/auth0-react"
 
 const container = document.getElementById("root")

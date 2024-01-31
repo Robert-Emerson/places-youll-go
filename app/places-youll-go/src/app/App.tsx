@@ -1,13 +1,12 @@
 import { RouterProvider } from "react-router-dom";
 
-import "./index.css"
-import { Header } from "@/shared/ui/Header";
+import { Header } from "@/shared/ui-components/Header";
 import { AppRouter } from "./routes";
 
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Header />
       <RouterProvider router={AppRouter} />
     </div>
