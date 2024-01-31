@@ -1,8 +1,7 @@
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom"
 
-import { Header } from "@/shared/ui-components/Header";
-import { AppRouter } from "./routes";
-
+import { Header } from "@/shared/ui-components/Header"
+import { AppRouter } from "./routes"
 
 const App = () => {
   return (

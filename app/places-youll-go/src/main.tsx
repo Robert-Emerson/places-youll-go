@@ -16,7 +16,7 @@ if (container) {
       domain={import.meta.env.VITE_IDP_DOMAIN}
       clientId={import.meta.env.VITE_IDP_CLIENTID}
       authorizationParams={{
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin,
       }}
     >
       <React.StrictMode>
