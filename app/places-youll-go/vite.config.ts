@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     open: true,
+    watch: {
+      usePolling: true
+    }
   },
   test: {
     globals: true,
@@ -14,6 +17,6 @@ export default defineConfig({
     mockReset: true,
   },
   resolve: {
-    alias: { '@': "/src"}
+    alias: { '@': "/src" }
   }
 })
