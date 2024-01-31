@@ -10,6 +10,6 @@ export const AppRouter = createBrowserRouter([
   },
   {
     path: "/quotes",
-    element: <Quotes />
+    element: <Quotes />,
   }
 ]);

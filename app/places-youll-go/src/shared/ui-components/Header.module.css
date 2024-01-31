@@ -25,20 +25,15 @@
     margin-right: 5em;
 }
 
-.container img {
-    height: 2.5rem;
-    padding: 0.5rem;
-}
-
 .container .searchbar {
     flex-grow: 2;
     flex-shrink: 2;
 }
 
-.container > div:first-child{
+.container > first-child{
     margin-right: auto;
 }
 
-.container > div:last-child{
+.container > last-child{
     margin-left: auto;
 }

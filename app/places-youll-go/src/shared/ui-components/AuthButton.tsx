@@ -13,13 +13,13 @@ function LogoutButton() {
   } = useAuth0();
 
   return isAuthenticated && (
-    <button onClick={() => {
+    <a href="#" onClick={() => {
       logout({
         logoutParams: {
           returnTo: window.location.origin
         }
       });
-    }}>Log Out</button>
+    }}>Log Out</a>
   );
 }
 
@@ -30,6 +30,6 @@ function LoginButton() {
   } = useAuth0();
 
   return !isAuthenticated && (
-    <button onClick={() => loginWithRedirect()}>Log In</button>
+    <a href="#" onClick={() => loginWithRedirect()}>Log In</a>
   );
 }
