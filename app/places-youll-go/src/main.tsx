@@ -12,19 +12,20 @@ if (container) {
   const root = createRoot(container)
 
   root.render(
-    <Auth0Provider
-      domain={import.meta.env.VITE_IDP_DOMAIN}
-      clientId={import.meta.env.VITE_IDP_CLIENTID}
-      authorizationParams={{
-        redirect_uri: window.location.origin,
-      }}
-    >
-      <React.StrictMode>
-        <Provider store={store}>
+
+    <React.StrictMode>
+      <Provider store={store}>
+        <Auth0Provider
+          domain={import.meta.env.VITE_IDP_DOMAIN}
+          clientId={import.meta.env.VITE_IDP_CLIENTID}
+          authorizationParams={{
+            redirect_uri: window.location.origin,
+          }}
+          >
           <App />
-        </Provider>
-      </React.StrictMode>
-    </Auth0Provider>,
+        </Auth0Provider>
+      </Provider>
+    </React.StrictMode>
   )
 } else {
   throw new Error(

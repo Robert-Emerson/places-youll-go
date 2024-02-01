@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AuthButton } from "./AuthButton"
 import navbar from "./NavBar.module.css"
 
@@ -8,9 +9,9 @@ type NavLink = {
 
 function NavItem({ link }: { link: NavLink }): JSX.Element {
   return (
-    <a href={link.location} key={link.location}>
+    <Link to={link.location} key={link.location}>
       {link.displayText}
-    </a>
+    </Link>
   )
 }
 
