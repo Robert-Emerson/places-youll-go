@@ -7,7 +7,7 @@ import mapCss from "./Map.module.css"
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_ACCESS_TOKEN
 
-export default function Map() {
+export const Map = () => {
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<mapboxgl.Map | null>(null)
   const [lng, setLng] = useState(-77.4)
