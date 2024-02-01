@@ -25,7 +25,7 @@ export const tripBuilderSlice = createSlice({
     }),
   }),
   selectors: {
-    isListView: tripBuilder => tripBuilder.viewType == TripBuilderViewType.List,
+    isListView: tripBuilder => tripBuilder.viewType === TripBuilderViewType.List,
   },
 })
 
