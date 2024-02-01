@@ -1,9 +1,9 @@
 import footer from "./Footer.module.css"
 
 export const Footer = () => {
-    return (
+  return (
     <footer className={footer.bottombar}>
-        <a href="https://github.com/Robert-Emerson/places-youll-go">GitHub</a>
-        </footer>
-    )
+      <a href="https://github.com/Robert-Emerson/places-youll-go">GitHub</a>
+    </footer>
+  )
 }

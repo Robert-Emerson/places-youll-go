@@ -10,7 +10,7 @@ function LogoutButton() {
   return (
     isAuthenticated && (
       <a
-        href="#"
+        href="#logout"
         onClick={() => {
           logout({
             logoutParams: {
@@ -30,7 +30,7 @@ function LoginButton() {
 
   return (
     !isAuthenticated && (
-      <a href="#" onClick={() => loginWithRedirect()}>
+      <a href="#login" onClick={() => loginWithRedirect()}>
         Log In
       </a>
     )
