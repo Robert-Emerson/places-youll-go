@@ -1,17 +1,5 @@
-# vite-template-redux
-
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
-
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
-
-## Goals
-
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+# places you'll go
+A React app for finding interesting sights to visit. Built to play around with React, Redux, and general frontend development.
 
 ## Scripts
 
@@ -20,8 +8,21 @@ npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
 - `preview` - locally preview production build
 - `test` - launch test runner
 
+## Dependencies
+- [Redux](https://redux.js.org)
+- [Auth0](https://auth0.com/)
+- [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides/)
+- File hosting for static content ([Azure Blob Storage](https://portal.azure.com))
+
+## Project Layout
+- __app__ - Composes cross component UI from `feature` and `shared` code.
+- __features__ - Standalone React components. Can take dependencies on `shared` code and other components, but no dependencies on `app` code
+- __shared__ - UI components found on every page, as well as cross-cutting concerns. Cannot take dependencies on any `feature` or `app` code.
+
 ## Inspiration
 
+- `npx degit reduxjs/redux-templates/packages/vite-template-redux my-app`
 - [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
 - [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
 - [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+
