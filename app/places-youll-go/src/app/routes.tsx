@@ -12,7 +12,7 @@ function Layout() {
     <div className={app.page}>
       <Header />
       <div className={app.content}>
-      <Outlet />
+        <Outlet />
       </div>
       <Footer />
     </div>
@@ -21,20 +21,21 @@ function Layout() {
 
 export const AppRouter = createBrowserRouter([
   {
-
     element: <Layout />,
     errorElement: <Error />,
-    children: [{
-      path: "/",
-      element: <TripBuilder />,
-    },
-    {
-      path: "/quotes",
-      element: <Quotes />,
-    },
-    {
-      path: "/*",
-      element: <Error />,
-    },
-    ]
-  }])
+    children: [
+      {
+        path: "/",
+        element: <TripBuilder />,
+      },
+      {
+        path: "/quotes",
+        element: <Quotes />,
+      },
+      {
+        path: "/*",
+        element: <Error />,
+      },
+    ],
+  },
+])

@@ -1,15 +1,15 @@
 .error {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  text-align: center;
 }
 
 .error img {
-    max-height: 1024px;
-    min-height: 0px;
-    max-width: 1024px;
-    min-width: 0px;
-    flex: 1 0 8px;
+  max-height: 1024px;
+  min-height: 0px;
+  max-width: 1024px;
+  min-width: 0px;
+  flex: 1 0 8px;
 }

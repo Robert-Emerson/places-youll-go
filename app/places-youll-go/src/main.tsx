@@ -12,7 +12,6 @@ if (container) {
   const root = createRoot(container)
 
   root.render(
-
     <React.StrictMode>
       <Provider store={store}>
         <Auth0Provider
@@ -21,11 +20,11 @@ if (container) {
           authorizationParams={{
             redirect_uri: window.location.origin,
           }}
-          >
+        >
           <App />
         </Auth0Provider>
       </Provider>
-    </React.StrictMode>
+    </React.StrictMode>,
   )
 } else {
   throw new Error(

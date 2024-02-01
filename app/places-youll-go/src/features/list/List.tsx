@@ -1,8 +1,3 @@
-export const List = () =>
-{
-    return (
-        <div>
-            List
-        </div>
-    )
+export const List = () => {
+  return <div>List</div>
 }

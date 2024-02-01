@@ -6,9 +6,9 @@ import { AppRouter } from "./routes"
 
 const App = () => {
   return (
-        <ErrorBoundary FallbackComponent={ErrorComponent}>
-          <RouterProvider router={AppRouter} />
-        </ErrorBoundary>
+    <ErrorBoundary FallbackComponent={ErrorComponent}>
+      <RouterProvider router={AppRouter} />
+    </ErrorBoundary>
   )
 }
 
