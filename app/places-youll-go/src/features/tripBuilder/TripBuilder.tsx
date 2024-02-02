@@ -72,7 +72,8 @@ export const TripBuilder = () => {
             ))}
           </select>
         </div>
-        {useList ? <List placeData={data} /> : <Map />}
+        {/* TODO: Downstream components need to actually read placeData from Redux/interact with that store; not have data passed in*/}
+        {useList ? <List placeData={data} /> : <Map placeData={data} />}
       </div>
     )
   }
