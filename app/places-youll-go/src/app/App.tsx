@@ -1,14 +1,15 @@
 import { RouterProvider } from "react-router-dom"
-import { ErrorBoundary } from "react-error-boundary"
 
 import { Error as ErrorComponent } from "@/shared/ui-components/Error"
 import { AppRouter } from "./routes"
+import { AppInsightsErrorBoundary } from "@microsoft/applicationinsights-react-js"
+import { reactPlugin } from "@/shared/services/AppInsightsService"
 
 const App = () => {
   return (
-    <ErrorBoundary FallbackComponent={ErrorComponent}>
+    <AppInsightsErrorBoundary  onError={() => <ErrorComponent/>} appInsights={reactPlugin}>
       <RouterProvider router={AppRouter} />
-    </ErrorBoundary>
+    </AppInsightsErrorBoundary >
   )
 }
 
