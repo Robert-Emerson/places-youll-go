@@ -27,7 +27,7 @@ export interface PlaceApiResponse {
 
 // Define a service using a base URL and expected endpoints
 export const flickrApiSlice = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com/users" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com/users/filter" }),
     reducerPath: "flickrApi",
     // Tag types are used for caching and invalidation.
     tagTypes: ["FlickrPlaces"],
@@ -36,7 +36,7 @@ export const flickrApiSlice = createApi({
         // and the expected query argument. If there is no argument, use `void`
         // for the argument type instead.
         getFlickrPlaces: build.query<PlaceApiResponse, number>({
-            query: (limit) => `?limit=${limit}`,
+            query: (limit) => `?key=address.state&value=DC&select=address,image,id,lastName&limit=${limit}`, // TODO: fake parameters for now
             // `providesTags` determines which 'tag' is attached to the
             // cached data returned by the query.
             providesTags: (result, error, id) => [{ type: "FlickrPlaces", id }],
