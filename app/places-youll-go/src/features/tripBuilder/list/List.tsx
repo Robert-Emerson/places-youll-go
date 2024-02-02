@@ -1,8 +1,7 @@
 import type { PlaceApiResponse } from "@/features/tripBuilder/tripBuilderApiSlice"
 
-export function List({ placeData }: { placeData: PlaceApiResponse }): JSX.Element {
-
-  console.log(placeData)
+export const List = ({ placeData }: { placeData: PlaceApiResponse }): JSX.Element => {
+  
   return (
     <table>
       <thead>
