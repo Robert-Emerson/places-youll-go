@@ -17,7 +17,10 @@ interface LocalTestContext {
 
 describe<LocalTestContext>("counter reducer", it => {
     beforeEach<LocalTestContext>(context => {
-        const initialState: TripBuilderState = { viewType: TripBuilderViewType.List }
+        const initialState: TripBuilderState = { 
+            viewType: TripBuilderViewType.List,
+            numberOfPlacesToLoad: 30
+         }
         const store = makeStore({ tripBuilder: initialState })
         context.store = store
     })
