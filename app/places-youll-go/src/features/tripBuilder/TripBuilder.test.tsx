@@ -1,66 +1,87 @@
 import { screen, waitFor } from "@testing-library/react"
 import { vi } from "vitest"
+import { http, HttpResponse } from "msw"
+import { setupServer } from 'msw/node'
 import { TripBuilder } from "./TripBuilder"
 import { renderWithProviders } from "@/shared/test-utils"
-import { TripBuilderState, TripBuilderViewType } from "./tripBuilderSlice"
+import type { TripBuilderState } from "./tripBuilderSlice";
+import { TripBuilderViewType } from "./tripBuilderSlice"
 
-vi.mock('@/features/map/Map', () => {
-    return { Map: () => <div role="Map" /> };
+vi.mock("@/features/tripBuilder/map/Map", () => {
+  return { Map: () => <div data-testid="Map" /> }
 })
 
-vi.mock('@/features/list/List', () => {
-    return { List: () => <div role="List" /> };
+vi.mock("@/features/tripBuilder/list/List", () => {
+  return { List: () => <div data-testid="List" /> }
 })
+
+const server = setupServer(
+  http.get('https://dummyjson.com/users/filter', () => {
+    return HttpResponse.json({})
+  }),
+)
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 const mapBuilderState: TripBuilderState = {
-    viewType: TripBuilderViewType.Map,
-    numberOfPlacesToLoad: 30
+  viewType: TripBuilderViewType.Map,
+  numberOfPlacesToLoad: 30,
 }
 
 const listBuilderState: TripBuilderState = {
-    viewType: TripBuilderViewType.List,
-    numberOfPlacesToLoad: 30
+  viewType: TripBuilderViewType.List,
+  numberOfPlacesToLoad: 30,
 }
 
-test("App should have correct initial render with map view type", () => {
-    renderWithProviders(<TripBuilder />, { preloadedState: { tripBuilder: mapBuilderState } });
+test("App should have correct initial render with map view type", async () => {
+  renderWithProviders(<TripBuilder />, {
+    preloadedState: { tripBuilder: mapBuilderState },
+  })
 
-    mapIsSelected();
+  await mapIsSelected()
 })
 
+test("App should have correct initial render with list view type", async () => {
+  renderWithProviders(<TripBuilder />, {
+    preloadedState: { tripBuilder: listBuilderState },
+  })
 
-test("App should have correct initial render with list view type", () => {
-    renderWithProviders(<TripBuilder />, { preloadedState: { tripBuilder: listBuilderState } });
-
-    listIsSelected();
+  await listIsSelected()
 })
 
 test("App should have correct render after selecting map", async () => {
-    const { user } = renderWithProviders(<TripBuilder />, { preloadedState: { tripBuilder: listBuilderState } });
+  const { user } = renderWithProviders(<TripBuilder />, {
+    preloadedState: { tripBuilder: listBuilderState },
+  })
+  await screen.findByText("Map")
+  await user.click(screen.getByText("Map"))
 
-    await user.click(screen.getByText("Map"));
-
-    mapIsSelected();
+  await mapIsSelected()
 })
 
 test("App should have correct render after selecting list", async () => {
-    const { user } = renderWithProviders(<TripBuilder />, { preloadedState: { tripBuilder: mapBuilderState } });
+  const { user } = renderWithProviders(<TripBuilder />, {
+    preloadedState: { tripBuilder: mapBuilderState },
+  })
 
-    await user.click(screen.getByText("List"));
+  await screen.findByText("List")
+  await user.click(screen.getByText("List"))
 
-    listIsSelected();
+  await listIsSelected()
 })
 
-function mapIsSelected(): void {
-    expect(screen.getByRole("Map")).toBeInTheDocument()
+async function mapIsSelected(): Promise<void> {
+  await screen.findByTestId("Map")
 
-    expect(screen.getByRole('tab', { selected: true })).toHaveTextContent("Map");
-    expect(screen.getByRole('tab', { selected: false })).toHaveTextContent("List");
+  expect(screen.getByRole("tab", { selected: true })).toHaveTextContent("Map")
+  expect(screen.getByRole("tab", { selected: false })).toHaveTextContent("List")
 }
 
-function listIsSelected(): void {
-    expect(screen.getByRole("List")).toBeInTheDocument()
+async function listIsSelected(): Promise<void> {
+  await screen.findByTestId("List")
 
-    expect(screen.getByRole('tab', { selected: true })).toHaveTextContent("List");
-    expect(screen.getByRole('tab', { selected: false })).toHaveTextContent("Map");
+  expect(screen.getByRole("tab", { selected: true })).toHaveTextContent("List")
+  expect(screen.getByRole("tab", { selected: false })).toHaveTextContent("Map")
 }

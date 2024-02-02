@@ -1,57 +1,60 @@
 import type { AppStore } from "@/app/store"
 import { makeStore } from "@/app/store"
+import type { TripBuilderState} from "./tripBuilderSlice";
+import { TripBuilderViewType } from "./tripBuilderSlice"
 import {
-    TripBuilderState,
-    TripBuilderViewType
-} from "./tripBuilderSlice"
-import {
-    tripBuilderSlice,
-    setListView,
-    setMapView,
-    isListView
+  tripBuilderSlice,
+  setListView,
+  setMapView,
+  isListView,
 } from "./tripBuilderSlice"
 
 interface LocalTestContext {
-    store: AppStore
+  store: AppStore
 }
 
-describe<LocalTestContext>("counter reducer", it => {
-    beforeEach<LocalTestContext>(context => {
-        const initialState: TripBuilderState = { 
-            viewType: TripBuilderViewType.List,
-            numberOfPlacesToLoad: 30
-         }
-        const store = makeStore({ tripBuilder: initialState })
-        context.store = store
+const PLACES_TO_LOAD: number = 10
+
+describe<LocalTestContext>("tripbuilder reducer", it => {
+  beforeEach<LocalTestContext>(context => {
+    const initialState: TripBuilderState = {
+      viewType: TripBuilderViewType.List,
+      numberOfPlacesToLoad: PLACES_TO_LOAD,
+    }
+    const store = makeStore({ tripBuilder: initialState })
+    context.store = store
+  })
+
+  it("should handle initial state", () => {
+    let expectedViewType: TripBuilderViewType = TripBuilderViewType.Map
+    if (import.meta.env.VITE_DEFAULT_VIEW)
+      expectedViewType = import.meta.env.VITE_DEFAULT_VIEW
+
+    expect(
+      tripBuilderSlice.reducer(undefined, { type: "unknown" }),
+    ).toStrictEqual({
+      viewType: expectedViewType,
+      numberOfPlacesToLoad: PLACES_TO_LOAD,
     })
+  })
+  it("should handle map change", ({ store }) => {
+    // Given
+    expect(isListView(store.getState())).toBe(true)
 
-    it("should handle initial state", () => {
-        let expectedViewType: TripBuilderViewType = TripBuilderViewType.Map
-        if (import.meta.env.VITE_DEFAULT_VIEW)
-            expectedViewType = import.meta.env.VITE_DEFAULT_VIEW
+    // When
+    store.dispatch(setMapView())
 
-        expect(tripBuilderSlice.reducer(undefined, { type: "unknown" })).toStrictEqual({
-            viewType: expectedViewType,
-        })
-    })
-    it("should handle map change", ({ store }) => {
-        // Given
-        expect(isListView(store.getState())).toBe(true)
+    // Then
+    expect(isListView(store.getState())).toBe(false)
+  })
+  it("should not change with list change", ({ store }) => {
+    // Given
+    expect(isListView(store.getState())).toBe(true)
 
-        // When
-        store.dispatch(setMapView())
+    // When
+    store.dispatch(setListView())
 
-        // Then
-        expect(isListView(store.getState())).toBe(false)
-    })
-    it("should not change with list change", ({ store }) => {
-        // Given
-        expect(isListView(store.getState())).toBe(true)
-
-        // When
-        store.dispatch(setListView())
-
-        // Then
-        expect(isListView(store.getState())).toBe(true)
-    })
+    // Then
+    expect(isListView(store.getState())).toBe(true)
+  })
 })
