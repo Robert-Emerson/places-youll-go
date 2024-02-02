@@ -11,17 +11,21 @@ export const TripBuilder = () => {
 
   return (
     <div className={tripBuilder.container}>
-      <div className={tripBuilder.viewSelect}>
+      <div className={tripBuilder.viewSelect} role="tablist">
         <button
+          role="tab"
           onClick={() => dispatch(setMapView())}
           className={!useList ? tripBuilder.active : ""}
+          aria-selected={!useList}
         >
           Map
         </button>
         |
         <button
+          role="tab"
           onClick={() => dispatch(setListView())}
           className={useList ? tripBuilder.active : ""}
+          aria-selected={useList}
         >
           List
         </button>

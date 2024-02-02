@@ -5,7 +5,7 @@ export enum TripBuilderViewType {
   List = "list",
 }
 
-interface TripBuilderState {
+export interface TripBuilderState {
   viewType: TripBuilderViewType
 }
 
