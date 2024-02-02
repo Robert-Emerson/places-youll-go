@@ -8,17 +8,18 @@ import {
   setListView,
   setPlacesToLoad,
   isListView,
-  selectPlacesToLoad
+  selectPlacesToLoad,
 } from "./tripBuilderSlice"
 import { useGetFlickrPlacesQuery } from "./tripBuilderApiSlice"
 
 export const TripBuilder = () => {
   const dispatch = useAppDispatch()
   const useList: boolean = useAppSelector(isListView)
-  const numberOfPlaces: number = useAppSelector(selectPlacesToLoad);
-  const { data, isError, isLoading, isSuccess } = useGetFlickrPlacesQuery(numberOfPlaces)
+  const numberOfPlaces: number = useAppSelector(selectPlacesToLoad)
+  const { data, isError, isLoading, isSuccess } =
+    useGetFlickrPlacesQuery(numberOfPlaces)
 
-  const options = [10,20,50]
+  const options = [10, 20, 50]
   if (isError) {
     return (
       <div>
