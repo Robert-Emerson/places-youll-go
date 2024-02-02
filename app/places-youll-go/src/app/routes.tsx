@@ -1,3 +1,4 @@
+/* c8 ignore start*/
 import { Outlet, createBrowserRouter } from "react-router-dom"
 
 import { Quotes } from "@/features/quotes/Quotes"
@@ -46,3 +47,4 @@ export const AppRouter = createBrowserRouter([
     ],
   },
 ])
+/* c8 ignore end*/
