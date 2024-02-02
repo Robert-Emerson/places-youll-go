@@ -4,11 +4,15 @@ import mapboxgl from "mapbox-gl" // eslint-disable-line import/no-webpack-loader
 import "mapbox-gl/dist/mapbox-gl.css"
 
 import mapCss from "./Map.module.css"
-import { PlaceApiResponse } from "../tripBuilderApiSlice"
+import type { PlaceApiResponse } from "../tripBuilderApiSlice"
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_ACCESS_TOKEN
 
-export const Map = ({ placeData }: { placeData: PlaceApiResponse }): JSX.Element => {
+export const Map = ({
+  placeData,
+}: {
+  placeData: PlaceApiResponse
+}): JSX.Element => {
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<mapboxgl.Map | null>(null)
 
@@ -16,7 +20,7 @@ export const Map = ({ placeData }: { placeData: PlaceApiResponse }): JSX.Element
   const [lng, setLng] = useState(-77.01)
   const [lat, setLat] = useState(38.9)
   const [zoom, setZoom] = useState(9)
-  const [places, _] = useState(placeData.users)
+  const [places, ] = useState(placeData.users)
 
   useEffect(() => {
     if (map.current) return // initialize map only once
@@ -33,9 +37,14 @@ export const Map = ({ placeData }: { placeData: PlaceApiResponse }): JSX.Element
     })
 
     map.current.on("load", () => {
-     places.forEach(place => {
-        const _ = new mapboxgl.Marker().setLngLat([place.address.coordinates.lng,place.address.coordinates.lat]).addTo(map.current!)
-      });
+      places.forEach(place => {
+        new mapboxgl.Marker()
+          .setLngLat([
+            place.address.coordinates.lng,
+            place.address.coordinates.lat,
+          ])
+          .addTo(map.current!)
+      })
     })
   })
 

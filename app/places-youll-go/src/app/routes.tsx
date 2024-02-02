@@ -14,9 +14,12 @@ function Layout() {
     <div className={app.page}>
       <Header />
       <div className={app.content}>
-        <AppInsightsErrorBoundary onError={() => <Error />} appInsights={reactPlugin}>
+        <AppInsightsErrorBoundary
+          onError={() => <Error />}
+          appInsights={reactPlugin}
+        >
           <Outlet />
-        </AppInsightsErrorBoundary >
+        </AppInsightsErrorBoundary>
       </div>
       <Footer />
     </div>
