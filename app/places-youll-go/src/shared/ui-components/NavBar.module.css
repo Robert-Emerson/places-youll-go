@@ -1,0 +1,18 @@
+nav a {
+  margin: 0.2em;
+  padding: 0.2em;
+  border-color: var(--main-theme-color);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10%;
+  text-decoration: none;
+}
+
+nav :not(last-child) {
+  color: var(--main-theme-color);
+}
+
+nav :last-child {
+  color: white;
+  background-color: var(--main-theme-color);
+}

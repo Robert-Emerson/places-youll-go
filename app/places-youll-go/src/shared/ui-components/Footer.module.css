@@ -1,0 +1,18 @@
+.bottombar {
+  border-bottom-color: var(--main-theme-color);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-top-color: var(--main-accent-color);
+  border-top-style: solid;
+  border-top-width: 1px;
+  background: var(--main-theme-color);
+  display: flex;
+  height: 5%;
+  flex-direction: column;
+}
+
+.bottombar a {
+  color: white;
+  align-self: center;
+  justify-content: center;
+}

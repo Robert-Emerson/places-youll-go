@@ -1,0 +1,42 @@
+.topbar {
+  border-bottom-color: var(--main-accent-color);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: var(--main-theme-color);
+  border-top-style: solid;
+  border-top-width: 3px;
+  max-width: 100%;
+}
+
+.topbar * {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.topbar h1 {
+  color: var(--main-theme-color);
+  font-family:
+    Impact,
+    Helvetica,
+    Arial Black,
+    sans serif;
+}
+
+.container {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.container .searchbar {
+  flex-grow: 2;
+  flex-shrink: 2;
+}
+
+.container > first-child {
+  margin-right: auto;
+}
+
+.container > last-child {
+  margin-left: auto;
+}
