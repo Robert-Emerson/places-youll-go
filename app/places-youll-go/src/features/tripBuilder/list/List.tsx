@@ -1,9 +1,9 @@
-import type { PlaceApiResponse } from "@/features/tripBuilder/tripBuilderApiSlice"
+import type { Place } from "@/entities/Place"
 
 export const List = ({
   placeData,
 }: {
-  placeData: PlaceApiResponse
+  placeData: Place[]
 }): JSX.Element => {
   return (
     <table>
@@ -14,21 +14,21 @@ export const List = ({
         </tr>
       </thead>
       <tbody>
-        {placeData.users.map(
+        {placeData.map(
           ({
             image,
-            lastName,
+            description,
             id,
           }: {
             image: string
-            lastName: string
+            description: string
             id: number
           }) => (
             <tr key={id}>
               <td>
                 <img src={image} alt="junk"/>
               </td>
-              <td>{lastName}</td>
+              <td>{description}</td>
             </tr>
           ),
         )}
