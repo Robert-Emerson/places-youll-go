@@ -5,6 +5,8 @@ import "mapbox-gl/dist/mapbox-gl.css"
 
 import mapCss from "./Map.module.css"
 import type { Place } from "@/entities/Place"
+import { ListItem } from "../list/ListItem"
+import ReactDOM from "react-dom"
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_ACCESS_TOKEN
 
@@ -38,11 +40,16 @@ export const Map = ({
 
     map.current.on("load", () => {
       places.forEach(place => {
+        const placeholder = document.createElement('div');
+        //TODO: placeholder for actual map popup card
+        ReactDOM.render(<ListItem place={place} />, placeholder);
+        
         new mapboxgl.Marker()
           .setLngLat([
             place.coordinates.lng,
             place.coordinates.lat,
           ])
+          .setPopup(new mapboxgl.Popup({maxWidth: "none"}).setDOMContent(placeholder))
           .addTo(map.current!)
       })
     })
