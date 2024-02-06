@@ -1,5 +1,5 @@
-import { List } from "@/features/tripBuilder/list/List"
-import { Map } from "@/features/tripBuilder/map/Map"
+import { List } from "@/features/list/List"
+import { Map } from "@/features/map/Map"
 import tripBuilder from "./TripBuilder.module.css"
 import { useAppDispatch, useAppSelector } from "@/shared/hooks"
 
