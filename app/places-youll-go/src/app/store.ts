@@ -1,10 +1,10 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
-import { counterSlice } from "@/features/counter/counterSlice"
-import { quotesApiSlice } from "@/features/quotes/quotesApiSlice"
-import { tripBuilderSlice } from "@/features/tripBuilder/tripBuilderSlice"
-import { flickrApiSlice } from "@/features/tripBuilder/tripBuilderApiSlice"
+import { counterSlice } from "@/pages/counter/counterSlice"
+import { quotesApiSlice } from "@/pages/quotes/quotesApiSlice"
+import { tripBuilderSlice } from "@/pages/tripBuilder/tripBuilderSlice"
+import { flickrApiSlice } from "@/pages/tripBuilder/tripBuilderApiSlice"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.

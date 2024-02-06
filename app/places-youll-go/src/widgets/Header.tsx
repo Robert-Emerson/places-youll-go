@@ -1,6 +1,6 @@
 import header from "./Header.module.css"
-import { Logo } from "./Logo"
-import { NavBar } from "./NavBar"
+import { Logo } from "@/widgets/Logo"
+import { NavBar } from "@/widgets/NavBar"
 
 export const Header = () => {
   return (

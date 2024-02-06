@@ -19,7 +19,9 @@ export const flickrApiSlice = createApi({
       // cached data returned by the query.
       providesTags: (result, error, id) => [{ type: "FlickrPlaces", id }],
       transformResponse: (response: PlaceApiResponseWrapper, meta, arg) => {
-        return response.users.map(responseItem => MapApiReponseToEntity(responseItem))
+        return response.users?.map(responseItem =>
+          MapApiReponseToEntity(responseItem),
+        )
       },
     }),
   }),
@@ -57,6 +59,6 @@ function MapApiReponseToEntity(response: PlaceApiResponse): Place {
     id: response.id,
     description: response.lastName,
     image: response.image,
-    coordinates: response.address.coordinates
+    coordinates: response.address.coordinates,
   }
 }

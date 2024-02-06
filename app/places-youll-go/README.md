@@ -18,9 +18,7 @@ A React app for finding interesting sights to visit. Built to play around with R
 
 ## Project Layout
 
-- **app** - Composes cross component UI from `feature` and `shared` code.
-- **features** - Standalone React components. Can take dependencies on `shared` code and other components, but no dependencies on `app` code
-- **shared** - UI components found on every page, as well as cross-cutting concerns. Cannot take dependencies on any `feature` or `app` code.
+Check out [feature-sliced-design](https://feature-sliced.design/docs/reference/layers#entities) for an overview of how the React code is laid out!
 
 ## Inspiration
 

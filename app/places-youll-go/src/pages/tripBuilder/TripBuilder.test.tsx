@@ -1,22 +1,22 @@
-import { screen, waitFor } from "@testing-library/react"
+import { screen } from "@testing-library/react"
 import { vi } from "vitest"
 import { http, HttpResponse } from "msw"
-import { setupServer } from 'msw/node'
+import { setupServer } from "msw/node"
 import { TripBuilder } from "./TripBuilder"
 import { renderWithProviders } from "@/shared/test-utils"
-import type { TripBuilderState } from "./tripBuilderSlice";
+import type { TripBuilderState } from "./tripBuilderSlice"
 import { TripBuilderViewType } from "./tripBuilderSlice"
 
-vi.mock("@/features/tripBuilder/map/Map", () => {
-  return { Map: () => <div data-testid="Map" /> }
+vi.mock("@/features/map/Map", () => {
+  return { Map: (_: any) => <div data-testid="Map" /> }
 })
 
-vi.mock("@/features/tripBuilder/list/List", () => {
-  return { List: () => <div data-testid="List" /> }
+vi.mock("@/features/list/List", () => {
+  return { List: (_: any) => <div data-testid="List" /> }
 })
 
 const server = setupServer(
-  http.get('https://dummyjson.com/users/filter', () => {
+  http.get("https://dummyjson.com/users/filter", () => {
     return HttpResponse.json({})
   }),
 )

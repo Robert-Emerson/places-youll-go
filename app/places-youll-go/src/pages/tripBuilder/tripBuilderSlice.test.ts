@@ -1,6 +1,6 @@
 import type { AppStore } from "@/app/store"
 import { makeStore } from "@/app/store"
-import type { TripBuilderState} from "./tripBuilderSlice";
+import type { TripBuilderState } from "./tripBuilderSlice"
 import { TripBuilderViewType } from "./tripBuilderSlice"
 import {
   tripBuilderSlice,
