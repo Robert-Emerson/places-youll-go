@@ -11,13 +11,24 @@ import {
   selectPlacesToLoad,
 } from "./tripBuilderSlice"
 import { useGetFlickrPlacesQuery } from "./tripBuilderApiSlice"
+import { useEffect, useState } from "react"
+import { Trip, TripFactory } from "@/entities/Trip"
 
 export const TripBuilder = () => {
+  const [trip, setTrip] = useState<Trip | null>(null)
   const dispatch = useAppDispatch()
   const useList: boolean = useAppSelector(isListView)
   const numberOfPlaces: number = useAppSelector(selectPlacesToLoad)
-  const { data, isError, isLoading, isSuccess } =
+  const { data: placeData, isError, isLoading, isSuccess } =
     useGetFlickrPlacesQuery(numberOfPlaces)
+
+  useEffect(() => {
+    if (trip == null) {
+      setTrip(getTrip() ?? TripFactory.CreateTrip)
+    }
+
+    return () => { storeTrip(trip) }
+  }, [trip])
 
   const options = [10, 20, 50]
   if (isError) {
@@ -74,8 +85,23 @@ export const TripBuilder = () => {
           </select>
         </div>
         {/* TODO: Downstream components need to actually read placeData from Redux/interact with that store; not have data passed in*/}
-        {useList ? <List placeData={data} /> : <Map placeData={data} />}
+        {useList ? <List placeData={placeData} /> : <Map placeData={placeData} />}
       </div>
     )
   }
+}
+
+
+function storeTrip(trip: Trip | null): void {
+  if (trip) { localStorage.setItem("currentTrip", JSON.stringify(trip)) }
+}
+
+function getTrip(): Trip | null {
+  let trip = localStorage.getItem("currentTrip");
+  
+  if (trip) {
+    return JSON.parse(trip)
+  }
+
+  return null
 }
