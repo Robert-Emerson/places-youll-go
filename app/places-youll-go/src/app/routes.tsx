@@ -1,7 +1,7 @@
 /* c8 ignore start*/
 import { Outlet, createBrowserRouter } from "react-router-dom"
 
-import { Quotes } from "@/pages/quotes/Quotes"
+import { Quotes } from "@/features/quotes/Quotes"
 import { Error } from "@/pages/error/Error"
 import { TripBuilder } from "@/pages/tripBuilder/TripBuilder"
 import { Header } from "@/widgets/Header"
