@@ -1,8 +1,8 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
-import { counterSlice } from "@/pages/counter/counterSlice"
-import { quotesApiSlice } from "@/pages/quotes/quotesApiSlice"
+import { counterSlice } from "@/features/counter/counterSlice"
+import { quotesApiSlice } from "@/features/quotes/quotesApiSlice"
 import { tripBuilderSlice } from "@/pages/tripBuilder/tripBuilderSlice"
 import { flickrApiSlice } from "@/pages/tripBuilder/tripBuilderApiSlice"
 
