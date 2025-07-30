@@ -7,8 +7,8 @@ const imageUrl = `https://live.staticflickr.com/4732/27468187969_32262e8b61_b.jp
 
 app.get("/images", (req, res) => {
   try {
-    let count = Math.min(req.query.count || 10, 100);
-    let images = new Array(count).fill({
+    let limit = Math.min(req.query.limit || 10, 100);
+    let images = new Array(limit).fill({
       coordinates: req.query.coordinates ?? {
         latitude: 40.71427,
         longitude: -74.00597,
@@ -28,6 +28,7 @@ app.get("/images", (req, res) => {
           id: index,
         };
       }),
+      count: images.length,
     });
   } catch (error) {
     console.error(error);

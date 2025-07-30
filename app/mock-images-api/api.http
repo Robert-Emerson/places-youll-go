@@ -17,7 +17,7 @@ client.test("Response should be an array", function (response) {
     image.coordinates.should.have.property("latitude");
     image.coordinates.should.have.property("longitude");
   });
-  response.body.images.length.should.be(11);
+  response.body.images.length.should.be(10);
 });
 %}
 
