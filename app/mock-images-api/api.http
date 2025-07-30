@@ -1,0 +1,26 @@
+@host = http://localhost:3000
+
+### Get a fake image response
+GET {{host}}/images
+
+> {%
+client.test("Response should be an array", function (response) {
+  response.to.have.status(200);
+  response.to.be.json;
+  response.to.have.property("body");
+  response.body.should.be.an("object");
+  response.body.should.have.property("images");
+  response.body.images.should.be.an("array");
+  response.body.images.forEach(function (image) {
+    image.should.have.property("url");
+    image.should.have.property("coordinates");
+    image.coordinates.should.have.property("latitude");
+    image.coordinates.should.have.property("longitude");
+  });
+  response.body.images.length.should.be(11);
+});
+%}
+
+###
+
+GET {{host}}/quiraing.jpg
