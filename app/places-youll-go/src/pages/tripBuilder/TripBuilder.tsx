@@ -10,7 +10,7 @@ import {
   isListView,
   selectPlacesToLoad,
 } from "./tripBuilderSlice"
-import { useGetFlickrPlacesQuery } from "./tripBuilderApiSlice"
+import { useGetImagesQuery} from "@/shared/api/imagesSlice"
 import { useEffect, useState } from "react"
 import { Trip, TripFactory } from "@/entities/Trip"
 
@@ -20,7 +20,7 @@ export const TripBuilder = () => {
   const useList: boolean = useAppSelector(isListView)
   const numberOfPlaces: number = useAppSelector(selectPlacesToLoad)
   const { data: placeData, isError, isLoading, isSuccess } =
-    useGetFlickrPlacesQuery(numberOfPlaces)
+  useGetImagesQuery(numberOfPlaces)
 
   useEffect(() => {
     if (trip == null) {

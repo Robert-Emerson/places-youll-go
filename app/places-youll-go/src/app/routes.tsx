@@ -8,7 +8,7 @@ import { Header } from "@/widgets/Header"
 import { Footer } from "@/widgets/Footer"
 import app from "./App.module.css"
 import { AppInsightsErrorBoundary } from "@microsoft/applicationinsights-react-js"
-import { reactPlugin } from "@/shared/services/AppInsightsService"
+import { reactPlugin } from "@/shared/lib/AppInsightsService"
 
 function Layout() {
   return (

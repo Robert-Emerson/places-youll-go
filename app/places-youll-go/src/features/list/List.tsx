@@ -1,3 +1,5 @@
+// TODO - CSS styling for list elements & container
+
 import type { Place } from "@/entities/Place"
 import { ListItem } from "./ListItem"
 

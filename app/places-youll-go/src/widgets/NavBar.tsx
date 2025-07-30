@@ -16,7 +16,7 @@ function NavItem({ link }: { link: NavLink }): JSX.Element {
 }
 
 export const NavBar = () => {
-  let links: [NavLink] = [{ displayText: "quotes", location: "quotes" }]
+  let links: NavLink[] = [];
 
   return (
     <nav className={navbar.nav}>
