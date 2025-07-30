@@ -1,6 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 3000;
+
+var corsOptions = {
+  origin: "http://localhost:5173",
+};
+app.use(cors(corsOptions));
 
 // Mock data
 const imageUrl = `https://live.staticflickr.com/4732/27468187969_32262e8b61_b.jpg`;
